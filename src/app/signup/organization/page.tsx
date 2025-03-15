@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "C:\\Users\\augus\\OneDrive\\Documents\\Hacksus\\goworker\\src\\components\\ui\\input";
+import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
 export default function OrganizationSignup() {
