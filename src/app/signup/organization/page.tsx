@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { API_ENDPOINTS } from "@/utils/apiEndpoints";
+import { Loader2 } from "lucide-react"; // Import spinner icon from lucide-react
 
 export default function OrganizationSignup() {
   const [companyName, setCompanyName] = useState("");
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false); // New loading state
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +24,8 @@ export default function OrganizationSignup() {
       setError("Company name is required.");
       return;
     }
+
+    setLoading(true); // Start loading
 
     try {
       const response = await fetch(API_ENDPOINTS.COMPANY_INSERT, {
@@ -42,6 +46,8 @@ export default function OrganizationSignup() {
     } catch (error) {
       console.error("Error submitting form:", error);
       setError("Failed to submit. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading after request completes
     }
   };
 
@@ -63,8 +69,18 @@ export default function OrganizationSignup() {
             />
             {error && <p className="text-red-500 text-sm">{error}</p>}
 
-            <Button type="submit" className="w-full mt-4">
-              Register
+            <Button
+              type="submit"
+              className="w-full mt-4 flex items-center justify-center"
+              disabled={loading} // Disable button while loading
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="animate-spin mr-2" /> Processing...
+                </>
+              ) : (
+                "Register"
+              )}
             </Button>
           </form>
         )}
