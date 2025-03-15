@@ -12,10 +12,6 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
-      <div className="w-full flex justify-end">
-        <Button className="px-4 py-2">Login</Button>
-      </div>
-
       <MotionDiv
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
