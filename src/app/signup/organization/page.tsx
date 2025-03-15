@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { API_ENDPOINTS } from "@/utils/apiEndpoints";
 
 export default function OrganizationSignup() {
   const [companyName, setCompanyName] = useState("");
@@ -23,7 +24,7 @@ export default function OrganizationSignup() {
     }
 
     try {
-      const response = await fetch("https://e11c-1-7-226-194.ngrok-free.app/company/Insert", {
+      const response = await fetch(API_ENDPOINTS.COMPANY_INSERT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
