@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaBriefcase, FaUsers, FaRocket } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export const MotionDiv = motion.div;
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
       <div className="w-full flex justify-end">
@@ -30,7 +32,7 @@ export default function Home() {
           feasible alternative for corporate environments to reach their carbon credit goals while
           ensuring employee productivity and comfort. Commuting has never been more fun or healthier!
         </p>
-        <Button className="mt-6 px-6 py-3 text-lg">Get Started</Button>
+        <Button className="mt-6 px-6 py-3 text-lg" onClick={() => router.push('/signup')}>Get Started</Button>
       </MotionDiv>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-5xl">
